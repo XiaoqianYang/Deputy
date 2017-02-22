@@ -137,30 +137,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="325" width="335" height="17"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdr-cy-hSp">
+                                <rect key="frame" x="16" y="62" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Pwp-pF-rS6">
+                                <rect key="frame" x="0.0" y="129" width="375" height="538"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN1-Z4-v9k">
+                                <rect key="frame" x="16" y="91" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TN1-Z4-v9k" secondAttribute="trailing" id="4GG-h3-1K7"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="TN1-Z4-v9k" secondAttribute="leading" id="A0j-wj-xev"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Pdr-cy-hSp" secondAttribute="leading" id="C2f-AS-2gN"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="Pwp-pF-rS6" secondAttribute="bottom" id="EMV-za-tJa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pdr-cy-hSp" secondAttribute="trailing" id="XEK-5W-pas"/>
+                            <constraint firstItem="Pwp-pF-rS6" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="eTY-JI-kwX"/>
+                            <constraint firstItem="Pwp-pF-rS6" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="f4F-jt-ZgY"/>
+                            <constraint firstItem="TN1-Z4-v9k" firstAttribute="top" secondItem="Pdr-cy-hSp" secondAttribute="bottom" constant="8" id="iW1-1d-Cs6"/>
+                            <constraint firstItem="Pwp-pF-rS6" firstAttribute="top" secondItem="TN1-Z4-v9k" secondAttribute="bottom" constant="17" id="seA-d8-gAq"/>
+                            <constraint firstItem="Pdr-cy-hSp" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="42" id="uDt-w9-si9"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="endTimeLabel" destination="TN1-Z4-v9k" id="YoQ-wl-ybT"/>
+                        <outlet property="mapView" destination="Pwp-pF-rS6" id="VDO-D5-b4G"/>
+                        <outlet property="startTimeLabel" destination="Pdr-cy-hSp" id="A4W-Pv-NCQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="622" y="66"/>
+            <point key="canvasLocation" x="621.60000000000002" y="65.217391304347828"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">

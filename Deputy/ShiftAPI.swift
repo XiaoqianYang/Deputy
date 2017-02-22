@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import CoreLocation
 
 class ShiftAPI {
     static let shared = ShiftAPI()
     private init() {}
     
     func getShiftList() -> [String : [Shift]] {
-        let shift1 = Shift.init(startTime : Date.MyDateFromISOString(string: "2017-01-16T06:35:57+00:00"), endTime:Date.MyDateFromISOString(string:""), startLocation: nil, endLocation: nil, icon: "")
-        let shift2 = Shift.init(startTime : Date.MyDateFromISOString(string: "2017-01-16T06:35:57+00:00"), endTime:Date.MyDateFromISOString(string: "2017-01-16T18:42:12+00:00"), startLocation: nil, endLocation: nil, icon: "")
+        let shift1 = Shift.init(startTime : Date.MyDateFromISOString(string: "2017-01-16T06:35:57+00:00"), endTime:Date.MyDateFromISOString(string:""), startLocation:CLLocationCoordinate2DMake(-33.777470, 150.977880), endLocation:CLLocationCoordinate2DMake(-33.808940, 151.182920), icon: "")
+        let shift2 = Shift.init(startTime : Date.MyDateFromISOString(string: "2017-01-16T06:35:57+00:00"), endTime:Date.MyDateFromISOString(string: "2017-01-16T18:42:12+00:00"), startLocation:CLLocationCoordinate2DMake(-33.777470, 150.977880), endLocation:CLLocationCoordinate2DMake(-33.808940, 151.182920), icon: "")
         let shiftlist1 = [shift1]
         let shiftlist2 = [shift2]
         var shifts : [String : [Shift]] = [:]
