@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
+class FinishedShiftController: UIViewController {
+    var shift : Shift!
+    
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
 

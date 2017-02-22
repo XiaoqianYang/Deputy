@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		47FBF23A1E5D283400196EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2391E5D283400196EC7 /* AppDelegate.swift */; };
 		47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF23B1E5D283400196EC7 /* Deputy.xcdatamodeld */; };
-		47FBF2411E5D283400196EC7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2401E5D283400196EC7 /* DetailViewController.swift */; };
+		47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */; };
 		47FBF2441E5D283400196EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF2421E5D283400196EC7 /* Main.storyboard */; };
 		47FBF2461E5D283400196EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF2451E5D283400196EC7 /* Assets.xcassets */; };
 		47FBF2491E5D283400196EC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF2471E5D283400196EC7 /* LaunchScreen.storyboard */; };
@@ -18,6 +18,9 @@
 		47FBF26D1E5D307F00196EC7 /* ShiftListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */; };
 		47FBF26F1E5D372100196EC7 /* ShiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF26E1E5D372100196EC7 /* ShiftCell.swift */; };
 		47FBF2711E5D3ADD00196EC7 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2701E5D3ADD00196EC7 /* Shift.swift */; };
+		47FBF27C1E5D989200196EC7 /* ShiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF27B1E5D989200196EC7 /* ShiftAPI.swift */; };
+		47FBF27F1E5DA15800196EC7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FBF27E1E5DA15800196EC7 /* MapKit.framework */; };
+		47FBF2811E5DA40500196EC7 /* InProgressShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,7 @@
 		47FBF2361E5D283400196EC7 /* Deputy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deputy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FBF2391E5D283400196EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47FBF23C1E5D283400196EC7 /* Deputy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deputy.xcdatamodel; sourceTree = "<group>"; };
-		47FBF2401E5D283400196EC7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedShiftViewController.swift; sourceTree = "<group>"; };
 		47FBF2431E5D283400196EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47FBF2451E5D283400196EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47FBF2481E5D283400196EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +58,9 @@
 		47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftListController.swift; sourceTree = "<group>"; };
 		47FBF26E1E5D372100196EC7 /* ShiftCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftCell.swift; sourceTree = "<group>"; };
 		47FBF2701E5D3ADD00196EC7 /* Shift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
+		47FBF27B1E5D989200196EC7 /* ShiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftAPI.swift; sourceTree = "<group>"; };
+		47FBF27E1E5DA15800196EC7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressShiftViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FBF27F1E5DA15800196EC7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +96,7 @@
 				47FBF2521E5D283400196EC7 /* DeputyTests */,
 				47FBF25D1E5D283400196EC7 /* DeputyUITests */,
 				47FBF2371E5D283400196EC7 /* Products */,
+				47FBF27D1E5DA15800196EC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +116,7 @@
 				47FBF2761E5D689B00196EC7 /* View */,
 				47FBF2731E5D681D00196EC7 /* ViewController */,
 				47FBF2741E5D684600196EC7 /* Model */,
+				47FBF27A1E5D987700196EC7 /* API */,
 				47FBF2751E5D686600196EC7 /* Supporting Files */,
 				47FBF2451E5D283400196EC7 /* Assets.xcassets */,
 				47FBF23B1E5D283400196EC7 /* Deputy.xcdatamodeld */,
@@ -137,7 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */,
-				47FBF2401E5D283400196EC7 /* DetailViewController.swift */,
+				47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */,
+				47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -167,6 +177,22 @@
 				47FBF26E1E5D372100196EC7 /* ShiftCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		47FBF27A1E5D987700196EC7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				47FBF27B1E5D989200196EC7 /* ShiftAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		47FBF27D1E5DA15800196EC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47FBF27E1E5DA15800196EC7 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +264,11 @@
 					47FBF2351E5D283400196EC7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					47FBF24E1E5D283400196EC7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -305,10 +336,12 @@
 			files = (
 				47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */,
 				47FBF2711E5D3ADD00196EC7 /* Shift.swift in Sources */,
+				47FBF2811E5DA40500196EC7 /* InProgressShiftViewController.swift in Sources */,
 				47FBF23A1E5D283400196EC7 /* AppDelegate.swift in Sources */,
+				47FBF27C1E5D989200196EC7 /* ShiftAPI.swift in Sources */,
 				47FBF26D1E5D307F00196EC7 /* ShiftListController.swift in Sources */,
 				47FBF26F1E5D372100196EC7 /* ShiftCell.swift in Sources */,
-				47FBF2411E5D283400196EC7 /* DetailViewController.swift in Sources */,
+				47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

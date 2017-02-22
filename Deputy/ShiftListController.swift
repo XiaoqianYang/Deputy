@@ -18,6 +18,7 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        shifts = ShiftAPI.shared.getShiftList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,5 +54,17 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        if indexPath.section == 0 {
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InProgress") as! InProgressShiftViewController
+            nextViewController.shift = Array(shifts.values)[indexPath.section][indexPath.row]
+            self.navigationController?.pushViewController(nextViewController, animated:true)
+        }
+        else {
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "FinishedShift") as! FinishedShiftController
+            nextViewController.shift = Array(shifts.values)[indexPath.section][indexPath.row]
+            self.navigationController?.pushViewController(nextViewController, animated:true)
+        }
     }
 }
