@@ -10,9 +10,9 @@ import Foundation
 import CoreLocation
 
 struct Shift {
-    var startTime : String
-    var endTime : String
+    var startTime : String!
+    var endTime : String?
     var startLocation : CLLocationCoordinate2D!
-    var endLocation : CLLocationCoordinate2D!
-    var icon : String
+    var endLocation : CLLocationCoordinate2D?
+    var icon : String?
 }

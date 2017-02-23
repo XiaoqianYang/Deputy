@@ -22,6 +22,10 @@
 		47FBF27F1E5DA15800196EC7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FBF27E1E5DA15800196EC7 /* MapKit.framework */; };
 		47FBF2811E5DA40500196EC7 /* InProgressShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */; };
 		47FBF2831E5DBB2100196EC7 /* ShiftAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2821E5DBB2100196EC7 /* ShiftAnnotation.swift */; };
+		47FBF2861E5EC30800196EC7 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2851E5EC30800196EC7 /* DatePickerDialog.swift */; };
+		47FBF2881E5EE44500196EC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2871E5EE44500196EC7 /* Constants.swift */; };
+		47FBF28C1E5EED7D00196EC7 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF28B1E5EED7D00196EC7 /* LocationSearchTable.swift */; };
+		47FBF28E1E5EF6C600196EC7 /* LocationSearchMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF28D1E5EF6C600196EC7 /* LocationSearchMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		47FBF27E1E5DA15800196EC7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressShiftViewController.swift; sourceTree = "<group>"; };
 		47FBF2821E5DBB2100196EC7 /* ShiftAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftAnnotation.swift; sourceTree = "<group>"; };
+		47FBF2851E5EC30800196EC7 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
+		47FBF2871E5EE44500196EC7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		47FBF28B1E5EED7D00196EC7 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		47FBF28D1E5EF6C600196EC7 /* LocationSearchMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				47FBF2761E5D689B00196EC7 /* View */,
-				47FBF2731E5D681D00196EC7 /* ViewController */,
+				47FBF2731E5D681D00196EC7 /* Controller */,
 				47FBF2741E5D684600196EC7 /* Model */,
 				47FBF2751E5D686600196EC7 /* Supporting Files */,
 				47FBF2451E5D283400196EC7 /* Assets.xcassets */,
@@ -143,15 +151,13 @@
 			path = DeputyUITests;
 			sourceTree = "<group>";
 		};
-		47FBF2731E5D681D00196EC7 /* ViewController */ = {
+		47FBF2731E5D681D00196EC7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */,
-				47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */,
-				47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */,
+				47FBF2841E5EAE5800196EC7 /* ViewController */,
 				47FBF27A1E5D987700196EC7 /* API */,
 			);
-			name = ViewController;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		47FBF2741E5D684600196EC7 /* Model */ = {
@@ -174,6 +180,7 @@
 		47FBF2761E5D689B00196EC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				47FBF2851E5EC30800196EC7 /* DatePickerDialog.swift */,
 				47FBF2421E5D283400196EC7 /* Main.storyboard */,
 				47FBF2471E5D283400196EC7 /* LaunchScreen.storyboard */,
 				47FBF26E1E5D372100196EC7 /* ShiftCell.swift */,
@@ -186,6 +193,7 @@
 			children = (
 				47FBF2821E5DBB2100196EC7 /* ShiftAnnotation.swift */,
 				47FBF27B1E5D989200196EC7 /* ShiftAPI.swift */,
+				47FBF2871E5EE44500196EC7 /* Constants.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -196,6 +204,18 @@
 				47FBF27E1E5DA15800196EC7 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		47FBF2841E5EAE5800196EC7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */,
+				47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */,
+				47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */,
+				47FBF28B1E5EED7D00196EC7 /* LocationSearchTable.swift */,
+				47FBF28D1E5EF6C600196EC7 /* LocationSearchMap.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,15 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FBF28C1E5EED7D00196EC7 /* LocationSearchTable.swift in Sources */,
 				47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */,
+				47FBF2881E5EE44500196EC7 /* Constants.swift in Sources */,
 				47FBF2831E5DBB2100196EC7 /* ShiftAnnotation.swift in Sources */,
 				47FBF2711E5D3ADD00196EC7 /* Shift.swift in Sources */,
+				47FBF28E1E5EF6C600196EC7 /* LocationSearchMap.swift in Sources */,
 				47FBF2811E5DA40500196EC7 /* InProgressShiftViewController.swift in Sources */,
 				47FBF23A1E5D283400196EC7 /* AppDelegate.swift in Sources */,
 				47FBF27C1E5D989200196EC7 /* ShiftAPI.swift in Sources */,
 				47FBF26D1E5D307F00196EC7 /* ShiftListController.swift in Sources */,
 				47FBF26F1E5D372100196EC7 /* ShiftCell.swift in Sources */,
 				47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */,
+				47FBF2861E5EC30800196EC7 /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

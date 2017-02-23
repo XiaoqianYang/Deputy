@@ -15,7 +15,7 @@ class ShiftCell: UITableViewCell {
     @IBOutlet var endedLabel: UILabel!
     
     func configCell(shift : Shift) {
-        self.startedLabel.text = "Started at: \(shift.startTime)"
-        self.endedLabel.text = "Ended at: \(shift.endTime)"
+        self.startedLabel.text = "Started at: \(shift.startTime!)"
+        self.endedLabel.text = "Ended at: \(shift.endTime!)"
     }
 }
