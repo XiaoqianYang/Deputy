@@ -34,7 +34,7 @@ public extension Date {
         if let date = formatter8601.date(from: string) {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
-            formatter.timeStyle = .medium
+            formatter.timeStyle = .short
             let string = formatter.string(from: date)
             return string
         }

@@ -21,14 +21,14 @@ class FinishedShiftController: UIViewController {
         self.startTimeLabel.text = "Started at: \(self.shift.startTime)"
         self.endTimeLabel.text = "Ended at: \(self.shift.endTime)"
         
+        // Config mapview
         let distance = CLLocation.init(latitude: shift.startLocation.latitude, longitude: shift.startLocation.longitude).distance(from: CLLocation.init(latitude: shift.endLocation.latitude, longitude: shift.endLocation.longitude))
         let region = MKCoordinateRegionMakeWithDistance(getCenterBetweenTwoCoordinate(point1: shift.startLocation, point2: shift.endLocation), distance*2, distance*2)
         mapView.setRegion(region, animated: true)
         
-        let startAnnotation = ShiftAnnotation(title: "start", subtitle: "", coordinate: shift.startLocation)
-        let endAnnotation = ShiftAnnotation(title: "end", subtitle: "", coordinate: shift.endLocation)
-        
-        mapView.addAnnotations([startAnnotation, endAnnotation])
+        self.mapView.addShiftAnnotation(type: .start, coordinate: self.shift.startLocation, time: self.shift.startTime)
+        self.mapView.addShiftAnnotation(type: .end, coordinate: self.shift.endLocation, time: self.shift.endTime)
+
     }
 
     override func viewDidLoad() {
@@ -42,38 +42,29 @@ class FinishedShiftController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: Event? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
+    func degreesToRadians(degrees: Double) -> Double { return degrees * M_PI / 180.0 }
+    func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / M_PI }
+    
+    func getCenterBetweenTwoCoordinate(point1 : CLLocationCoordinate2D, point2 : CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+    
+        let lat1 = degreesToRadians(degrees: point1.latitude)
+        let lon1 = degreesToRadians(degrees: point1.longitude)
+        
+        let lat2 = degreesToRadians(degrees: point2.latitude)
+        let lon2 = degreesToRadians(degrees: point2.longitude)
+        
+        let dLon = lon2 - lon1
+        
+        let x = cos(lat2) * cos(dLon);
+        let y = cos(lat2) * sin(dLon);
+        
+        let lat3 = atan2( sin(lat1) + sin(lat2), sqrt((cos(lat1) + x) * (cos(lat1) + x) + y * y) );
+        let lon3 = lon1 + atan2(y, cos(lat1) + x);
+        
+        return CLLocationCoordinate2DMake(lat3 * 180 / M_PI, lon3 * 180 / M_PI);
+
+    
     }
-
-
-
-        func degreesToRadians(degrees: Double) -> Double { return degrees * M_PI / 180.0 }
-        func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / M_PI }
-        
-        func getCenterBetweenTwoCoordinate(point1 : CLLocationCoordinate2D, point2 : CLLocationCoordinate2D) -> CLLocationCoordinate2D {
-        
-            let lat1 = degreesToRadians(degrees: point1.latitude)
-            let lon1 = degreesToRadians(degrees: point1.longitude)
-            
-            let lat2 = degreesToRadians(degrees: point2.latitude)
-            let lon2 = degreesToRadians(degrees: point2.longitude)
-            
-            let dLon = lon2 - lon1
-            
-            let x = cos(lat2) * cos(dLon);
-            let y = cos(lat2) * sin(dLon);
-            
-            let lat3 = atan2( sin(lat1) + sin(lat2), sqrt((cos(lat1) + x) * (cos(lat1) + x) + y * y) );
-            let lon3 = lon1 + atan2(y, cos(lat1) + x);
-                        
-            return CLLocationCoordinate2DMake(lat3 * 180 / M_PI, lon3 * 180 / M_PI);
-
-        
-        }
-
 }
+
 
