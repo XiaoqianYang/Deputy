@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4706909B1E5FD6BE00525373 /* StartShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */; };
 		47FBF23A1E5D283400196EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2391E5D283400196EC7 /* AppDelegate.swift */; };
 		47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF23B1E5D283400196EC7 /* Deputy.xcdatamodeld */; };
 		47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartShiftViewController.swift; sourceTree = "<group>"; };
 		47FBF2361E5D283400196EC7 /* Deputy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deputy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FBF2391E5D283400196EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47FBF23C1E5D283400196EC7 /* Deputy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deputy.xcdatamodel; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */,
 				47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */,
 				47FBF2801E5DA40500196EC7 /* InProgressShiftViewController.swift */,
+				4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */,
 				47FBF28B1E5EED7D00196EC7 /* LocationSearchTable.swift */,
 				47FBF28D1E5EF6C600196EC7 /* LocationSearchMap.swift */,
 			);
@@ -368,6 +371,7 @@
 				47FBF27C1E5D989200196EC7 /* ShiftAPI.swift in Sources */,
 				47FBF26D1E5D307F00196EC7 /* ShiftListController.swift in Sources */,
 				47FBF26F1E5D372100196EC7 /* ShiftCell.swift in Sources */,
+				4706909B1E5FD6BE00525373 /* StartShiftViewController.swift in Sources */,
 				47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */,
 				47FBF2861E5EC30800196EC7 /* DatePickerDialog.swift in Sources */,
 			);

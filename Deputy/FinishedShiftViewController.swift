@@ -16,11 +16,11 @@ class FinishedShiftController: UIViewController {
 
     func configureView() {        
         // Config mapview
-        let distance = CLLocation.init(latitude: shift.startLocation.latitude, longitude: shift.startLocation.longitude).distance(from: CLLocation.init(latitude: (shift.endLocation?.latitude)!, longitude: (shift.endLocation?.longitude)!))
-        let region = MKCoordinateRegionMakeWithDistance(getCenterBetweenTwoCoordinate(point1: shift.startLocation, point2: shift.endLocation!), distance*2, distance*2)
+        let distance = CLLocation.init(latitude: (shift.startLocation?.latitude)!, longitude: (shift.startLocation?.longitude)!).distance(from: CLLocation.init(latitude: (shift.endLocation?.latitude)!, longitude: (shift.endLocation?.longitude)!))
+        let region = MKCoordinateRegionMakeWithDistance(getCenterBetweenTwoCoordinate(point1: shift.startLocation!, point2: shift.endLocation!), distance*2, distance*2)
         mapView.setRegion(region, animated: true)
         
-        self.mapView.addShiftAnnotation(type: .start, coordinate: self.shift.startLocation, time: self.shift.startTime)
+        self.mapView.addShiftAnnotation(type: .start, coordinate: self.shift.startLocation!, time: self.shift.startTime!)
         self.mapView.addShiftAnnotation(type: .end, coordinate: self.shift.endLocation!, time: self.shift.endTime!)
 
     }
@@ -62,7 +62,7 @@ class FinishedShiftController: UIViewController {
 }
 
 extension MKMapView {
-    func addShiftAnnotation(type: ShiftAnnotationType, coordinate: CLLocationCoordinate2D, time: String) {
+    func addShiftAnnotation(type: ShiftAnnotationType, coordinate: CLLocationCoordinate2D, time: Date) {
         
         let location = CLLocation.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
         let geoCode = CLGeocoder.init()
@@ -77,7 +77,7 @@ extension MKMapView {
             }
             
             if error != nil {
-                let annotation = ShiftAnnotation(coordinate: coordinate, title: stringType, subtitle: time)
+                let annotation = ShiftAnnotation(coordinate: coordinate, title: stringType, subtitle: Date.MyDateFromDate(date: time))
                 self.addAnnotation(annotation)
                 print(error?.localizedDescription)
                 return
@@ -89,9 +89,9 @@ extension MKMapView {
                 if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
                     switch type {
                     case .start:
-                        title = "Started at: \(time)"
+                        title = "Started at: \(Date.MyDateFromDate(date: time))"
                     case .end:
-                        title = "Ended at: \(time)"
+                        title = "Ended at: \(Date.MyDateFromDate(date: time))"
                     }
                 }
                 
@@ -101,7 +101,7 @@ extension MKMapView {
                 self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: title, subtitle: "\(subtitle)"))
             }
             else {
-                self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: stringType, subtitle: time))
+                self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: stringType, subtitle: Date.MyDateFromDate(date: time)))
             }
             
             

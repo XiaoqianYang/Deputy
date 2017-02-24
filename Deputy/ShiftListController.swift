@@ -14,11 +14,14 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var tableView: UITableView!
     var shifts = [String : [Shift]]()
 
+    @IBOutlet var startButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         shifts = ShiftAPI.shared.getShiftList()
+        startButton.layer.cornerRadius = 5
     }
     
     override func didReceiveMemoryWarning() {
