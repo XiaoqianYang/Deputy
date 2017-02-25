@@ -16,33 +16,8 @@ class ShiftAPI {
     func getShiftList(comletion:@escaping (_ shifts: [String : [Shift]])->Void){
         ShiftClient.shared.getShiftListFromServer(comletion:{
          shifts in
-            var shiftToReturn = [String : [Shift]]()
-            var inprogressShift = [Shift]()
-            var finishedShift = [Shift]()
-            for(_, item) in shifts.enumerated() {
-                if item.endTime == nil {
-                    inprogressShift.append(item)
-                }
-                else {
-                    finishedShift.append(item)
-                }
-            }
-            shiftToReturn["InProgress"] = inprogressShift
-            shiftToReturn["Finished"] = finishedShift
-            comletion(shiftToReturn)
+            comletion(self.formatShiftsListToTableDataSource(shifts: shifts))
         })
-//        let shift1 = Shift.init()
-//        shift1.configShift(id: nil, startTime: "2017-01-16T06:35:57+00:00", endTime: "2017-01-16T18:42:12+00:00", startLatitude: "-33.777470", startLongitude: "151.182920", endLatitude: "-33.808940", endLongitude: "151.182920", icon: nil)
-//        let shift2 = Shift.init()
-//        shift2.configShift(id: nil, startTime: "2017-01-16T06:35:57+00:00", endTime: nil, startLatitude: "-33.777470", startLongitude: "151.182920", endLatitude: nil, endLongitude: nil, icon: nil)
-//        let shiftlist1 = [shift1]
-//        let shiftlist2 = [shift2]
-//        var shifts : [String : [Shift]] = [:]
-//        shifts["processing"] = shiftlist1
-//        shifts["finished"] = shiftlist2
-//        
-//        
-//        return shifts
     }
     
     func endShift(shift : Shift) {
@@ -52,6 +27,24 @@ class ShiftAPI {
     func startShift(shift : Shift) {
         ShiftClient.shared.startShiftOnServer(shift: shift)
         print("start Shift: \(shift)")
+    }
+    
+    func formatShiftsListToTableDataSource(shifts: [Shift]) -> [String:[Shift]] {
+        var dataSource = [String : [Shift]]()
+        var inprogressShift = [Shift]()
+        var finishedShift = [Shift]()
+        for(_, item) in shifts.enumerated() {
+            if item.endTime == nil {
+                inprogressShift.append(item)
+            }
+            else {
+                finishedShift.append(item)
+            }
+        }
+        dataSource["InProgress"] = inprogressShift
+        dataSource["Finished"] = finishedShift
+        
+        return dataSource
     }
 }
 
