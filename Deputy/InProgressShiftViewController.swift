@@ -30,6 +30,7 @@ class InProgressShiftViewController: UIViewController {
         startPlaceLabel.setPlaceForLabel(coordinate: self.shift.startLocation)
         
         endTimeInput.text = Date.MyDateFromDate(date: Date())
+        self.shift.endTime = Date()
         let tapTime = UITapGestureRecognizer(target: self, action: #selector(tapEndTime(_:)))
         endTimeInput.addGestureRecognizer(tapTime)
 

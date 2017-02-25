@@ -20,8 +20,18 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        shifts = ShiftAPI.shared.getShiftList()
         startButton.layer.cornerRadius = 5
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ShiftAPI.shared.getShiftList(comletion: {
+            shifts in
+            self.shifts = shifts
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {

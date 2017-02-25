@@ -11,5 +11,6 @@ import Foundation
 class Constants {
     static let DATE_DATESTYLE = .medium as DateFormatter.Style
     static let DATE_TIMESTYLE = .short as DateFormatter.Style
+    static let CURRENT_USER_TOKEN = "0af2f215326e0ceb9a530b41b5bbbb1d07442767"
    
 }

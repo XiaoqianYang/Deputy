@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4706909B1E5FD6BE00525373 /* StartShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */; };
+		4706909D1E60408100525373 /* ShiftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706909C1E60408100525373 /* ShiftClient.swift */; };
 		47FBF23A1E5D283400196EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2391E5D283400196EC7 /* AppDelegate.swift */; };
 		47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF23B1E5D283400196EC7 /* Deputy.xcdatamodeld */; };
 		47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartShiftViewController.swift; sourceTree = "<group>"; };
+		4706909C1E60408100525373 /* ShiftClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftClient.swift; sourceTree = "<group>"; };
 		47FBF2361E5D283400196EC7 /* Deputy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deputy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FBF2391E5D283400196EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47FBF23C1E5D283400196EC7 /* Deputy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deputy.xcdatamodel; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				47FBF2821E5DBB2100196EC7 /* ShiftAnnotation.swift */,
 				47FBF27B1E5D989200196EC7 /* ShiftAPI.swift */,
 				47FBF2871E5EE44500196EC7 /* Constants.swift */,
+				4706909C1E60408100525373 /* ShiftClient.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				47FBF26D1E5D307F00196EC7 /* ShiftListController.swift in Sources */,
 				47FBF26F1E5D372100196EC7 /* ShiftCell.swift in Sources */,
 				4706909B1E5FD6BE00525373 /* StartShiftViewController.swift in Sources */,
+				4706909D1E60408100525373 /* ShiftClient.swift in Sources */,
 				47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */,
 				47FBF2861E5EC30800196EC7 /* DatePickerDialog.swift in Sources */,
 			);
