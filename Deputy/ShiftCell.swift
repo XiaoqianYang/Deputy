@@ -18,5 +18,20 @@ class ShiftCell: UITableViewCell {
         
         self.startedLabel.text = "Started at: \(Date.MyDateFromDate(date: shift.startTime))"
         self.endedLabel.text = "Ended at: \(Date.MyDateFromDate(date: shift.endTime))"
+        self.iconView.image = UIImage.init(named: "icon")
+        
+        if shift.icon == nil {
+            return
+        }
+        else {
+            ShiftAPI.shared.getPic(url: shift.icon!, comletion: {image in
+                if image == nil {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.iconView.image = image
+                }
+            })
+        }
     }
 }

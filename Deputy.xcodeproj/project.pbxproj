@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4706909B1E5FD6BE00525373 /* StartShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */; };
 		4706909D1E60408100525373 /* ShiftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706909C1E60408100525373 /* ShiftClient.swift */; };
+		4706909F1E613C1B00525373 /* ShiftPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706909E1E613C1B00525373 /* ShiftPersistence.swift */; };
+		470690DB1E61926000525373 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 470690DA1E61926000525373 /* icon.png */; };
 		47FBF23A1E5D283400196EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2391E5D283400196EC7 /* AppDelegate.swift */; };
 		47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF23B1E5D283400196EC7 /* Deputy.xcdatamodeld */; };
 		47FBF2411E5D283400196EC7 /* FinishedShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2401E5D283400196EC7 /* FinishedShiftViewController.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		4706909A1E5FD6BE00525373 /* StartShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartShiftViewController.swift; sourceTree = "<group>"; };
 		4706909C1E60408100525373 /* ShiftClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftClient.swift; sourceTree = "<group>"; };
+		4706909E1E613C1B00525373 /* ShiftPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftPersistence.swift; sourceTree = "<group>"; };
+		470690DA1E61926000525373 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		47FBF2361E5D283400196EC7 /* Deputy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deputy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FBF2391E5D283400196EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47FBF23C1E5D283400196EC7 /* Deputy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deputy.xcdatamodel; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 		47FBF2751E5D686600196EC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				470690DA1E61926000525373 /* icon.png */,
 				47FBF24A1E5D283400196EC7 /* Info.plist */,
 				47FBF2391E5D283400196EC7 /* AppDelegate.swift */,
 			);
@@ -199,6 +204,7 @@
 				47FBF27B1E5D989200196EC7 /* ShiftAPI.swift */,
 				47FBF2871E5EE44500196EC7 /* Constants.swift */,
 				4706909C1E60408100525373 /* ShiftClient.swift */,
+				4706909E1E613C1B00525373 /* ShiftPersistence.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				470690DB1E61926000525373 /* icon.png in Resources */,
 				47FBF2491E5D283400196EC7 /* LaunchScreen.storyboard in Resources */,
 				47FBF2461E5D283400196EC7 /* Assets.xcassets in Resources */,
 				47FBF2441E5D283400196EC7 /* Main.storyboard in Resources */,
@@ -367,6 +374,7 @@
 				47FBF23D1E5D283400196EC7 /* Deputy.xcdatamodeld in Sources */,
 				47FBF2881E5EE44500196EC7 /* Constants.swift in Sources */,
 				47FBF2831E5DBB2100196EC7 /* ShiftAnnotation.swift in Sources */,
+				4706909F1E613C1B00525373 /* ShiftPersistence.swift in Sources */,
 				47FBF2711E5D3ADD00196EC7 /* Shift.swift in Sources */,
 				47FBF28E1E5EF6C600196EC7 /* LocationSearchMap.swift in Sources */,
 				47FBF2811E5DA40500196EC7 /* InProgressShiftViewController.swift in Sources */,

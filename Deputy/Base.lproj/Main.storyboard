@@ -64,14 +64,14 @@
                                                     <rect key="frame" x="16" y="8" width="55" height="55"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Ended at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEi-qc-SNg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Ended at:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEi-qc-SNg">
                                                     <rect key="frame" x="79" y="37" width="288" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Started at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea3-rC-Ouu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Started at:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea3-rC-Ouu">
                                                     <rect key="frame" x="79" y="8" width="288" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -89,6 +89,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aQn-XV-nF0">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -103,6 +108,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vwl-82-ePN"/>
                     <connections>
+                        <outlet property="indicatorView" destination="aQn-XV-nF0" id="qmy-OB-WCS"/>
                         <outlet property="startButton" destination="b8w-Cj-Vp7" id="i4d-4r-hPi"/>
                         <outlet property="tableView" destination="mkd-0Q-cIf" id="G99-Tt-K2T"/>
                     </connections>
@@ -193,7 +199,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCs-Yr-TbG">
-                                <rect key="frame" x="16" y="321" width="343" height="30"/>
+                                <rect key="frame" x="16" y="376" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.58431375029999999" green="0.80392163989999998" blue="0.074509806930000005" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="End Shift">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,12 +209,17 @@
                                     <action selector="endShiftPressed:" destination="hjr-0g-r6y" eventType="touchUpInside" id="ojj-hy-dPZ"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Eo6-As-65L">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZOP-np-qzt" firstAttribute="leading" secondItem="cKw-U5-sTR" secondAttribute="trailing" constant="5" id="38Q-1n-WWD"/>
                             <constraint firstItem="Wwj-qn-Cqh" firstAttribute="leading" secondItem="ucO-Td-M44" secondAttribute="trailing" constant="-9" id="3EV-UC-bfz"/>
-                            <constraint firstItem="RCs-Yr-TbG" firstAttribute="top" secondItem="vKZ-Pq-d1K" secondAttribute="bottom" constant="93" id="3cC-VH-wLn"/>
+                            <constraint firstItem="RCs-Yr-TbG" firstAttribute="top" secondItem="vKZ-Pq-d1K" secondAttribute="bottom" constant="148" id="3cC-VH-wLn"/>
                             <constraint firstItem="vKZ-Pq-d1K" firstAttribute="top" secondItem="Wwj-qn-Cqh" secondAttribute="bottom" constant="23" id="64X-zk-dFI"/>
                             <constraint firstItem="vKZ-Pq-d1K" firstAttribute="leading" secondItem="Jlb-bI-A1w" secondAttribute="trailing" constant="-29" id="7NX-qL-HDE"/>
                             <constraint firstAttribute="leadingMargin" secondItem="RCs-Yr-TbG" secondAttribute="leading" id="7bi-kN-UZx"/>
@@ -235,6 +246,7 @@
                         <outlet property="endPlaceInput" destination="vKZ-Pq-d1K" id="ei5-is-ANm"/>
                         <outlet property="endShiftBtn" destination="RCs-Yr-TbG" id="4d0-Hx-Zgg"/>
                         <outlet property="endTimeInput" destination="Wwj-qn-Cqh" id="FRb-ni-VrD"/>
+                        <outlet property="indicatorView" destination="Eo6-As-65L" id="2wf-T3-mOZ"/>
                         <outlet property="startPlaceLabel" destination="ZOP-np-qzt" id="rkh-KA-2av"/>
                         <outlet property="starteTimeLabel" destination="DP9-9N-0AL" id="Wis-IL-s6w"/>
                     </connections>
@@ -419,7 +431,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-35-XEJ">
-                                <rect key="frame" x="16" y="365" width="343" height="30"/>
+                                <rect key="frame" x="16" y="396" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.58431375029999999" green="0.80392163989999998" blue="0.074509806930000005" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="Start Shift">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -429,11 +441,16 @@
                                     <action selector="startShiftPressed:" destination="pza-Ie-5fD" eventType="touchUpInside" id="PId-6d-dC9"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-AB-FTO">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ska-WC-MrV" secondAttribute="trailing" id="0Ir-Bo-pzv"/>
-                            <constraint firstItem="WnP-35-XEJ" firstAttribute="top" secondItem="ska-WC-MrV" secondAttribute="bottom" constant="199" id="1sJ-2J-V3A"/>
+                            <constraint firstItem="WnP-35-XEJ" firstAttribute="top" secondItem="ska-WC-MrV" secondAttribute="bottom" constant="230" id="1sJ-2J-V3A"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Tte-DF-D7r" secondAttribute="leading" id="OHc-4f-PSX"/>
                             <constraint firstItem="ska-WC-MrV" firstAttribute="leading" secondItem="Tte-DF-D7r" secondAttribute="trailing" constant="5" id="QkF-F6-I2y"/>
                             <constraint firstItem="ska-WC-MrV" firstAttribute="top" secondItem="EcY-cx-Klf" secondAttribute="bottom" constant="17" id="U8w-qW-7cT"/>
@@ -449,6 +466,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CiS-35-BfV"/>
                     <connections>
+                        <outlet property="indicatorView" destination="4gt-AB-FTO" id="6Dc-W5-CI0"/>
                         <outlet property="startPlaceInput" destination="ska-WC-MrV" id="l63-M5-mKr"/>
                         <outlet property="startShiftBtn" destination="WnP-35-XEJ" id="aqO-fU-mDT"/>
                         <outlet property="startTimeInput" destination="EcY-cx-Klf" id="keG-An-45z"/>

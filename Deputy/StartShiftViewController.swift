@@ -18,6 +18,7 @@ class StartShiftViewController: UIViewController {
     
     @IBOutlet var startShiftBtn: UIButton!
     
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
     let locationManager = CLLocationManager()
     
     func configureView() {
@@ -75,8 +76,15 @@ class StartShiftViewController: UIViewController {
             })
         }
         else {
-            ShiftAPI.shared.startShift(shift: self.shift)
-            self.navigationController?.popViewController(animated: true)
+            ShiftAPI.shared.startShift(shift: self.shift, comletion: {
+                DispatchQueue.main.async {
+                    self.indicatorView.stopAnimating()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            
+            })
+
+            self.indicatorView.startAnimating()
         }
     }
     

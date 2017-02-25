@@ -16,6 +16,8 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet var startButton: UIButton!
     
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -30,8 +32,12 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
             self.shifts = shifts
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.indicatorView.stopAnimating()
+                self.indicatorView.removeFromSuperview()
             }
         })
+        self.view.addSubview(self.indicatorView)
+        self.indicatorView.startAnimating()
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,10 +67,6 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
 // MARK: UITableViewDelegate
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 62.0
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

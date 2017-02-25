@@ -17,8 +17,11 @@ class FinishedShiftController: UIViewController {
     func configureView() {        
         // Config mapview
         let distance = CLLocation.init(latitude: (shift.startLocation?.latitude)!, longitude: (shift.startLocation?.longitude)!).distance(from: CLLocation.init(latitude: (shift.endLocation?.latitude)!, longitude: (shift.endLocation?.longitude)!))
-        let region = MKCoordinateRegionMakeWithDistance(getCenterBetweenTwoCoordinate(point1: shift.startLocation!, point2: shift.endLocation!), distance*2, distance*2)
-        mapView.setRegion(region, animated: true)
+        var region = MKCoordinateRegionMakeWithDistance(getCenterBetweenTwoCoordinate(point1: shift.startLocation!, point2: shift.endLocation!), distance*2, distance*2)
+        region = mapView.regionThatFits(region)
+        if (!(region.span.latitudeDelta).isNaN && !(region.span.longitudeDelta).isNaN) {
+            mapView.setRegion(region, animated: true)
+        }
         
         self.mapView.addShiftAnnotation(type: .start, coordinate: self.shift.startLocation!, time: self.shift.startTime!)
         self.mapView.addShiftAnnotation(type: .end, coordinate: self.shift.endLocation!, time: self.shift.endTime!)
