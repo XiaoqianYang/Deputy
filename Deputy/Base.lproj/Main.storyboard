@@ -49,8 +49,19 @@
                                     <segue destination="pza-Ie-5fD" kind="push" id="V3X-eb-rvv"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8fA-SR-Vqc">
+                                <rect key="frame" x="20" y="117" width="374" height="29"/>
+                                <segments>
+                                    <segment title="Table"/>
+                                    <segment title="Map"/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="b40-38-xUd" eventType="valueChanged" id="wmo-ad-gIO"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mkd-0Q-cIf">
-                                <rect key="frame" x="0.0" y="124" width="414" height="612"/>
+                                <rect key="frame" x="0.0" y="153" width="414" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="gjb-nK-RBp" customClass="ShiftCell" customModule="Deputy" customModuleProvider="target">
@@ -104,6 +115,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-Mx-b34">
+                                <rect key="frame" x="0.0" y="153" width="414" height="583"/>
+                            </mapView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aQn-XV-nF0">
                                 <rect key="frame" x="189" y="350" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,20 +125,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="8fA-SR-Vqc" secondAttribute="leading" id="0RS-Ip-PEe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3vz-Mx-b34" secondAttribute="trailing" constant="-20" id="2Cr-OG-Exm"/>
+                            <constraint firstItem="3vz-Mx-b34" firstAttribute="top" secondItem="8fA-SR-Vqc" secondAttribute="bottom" constant="8" id="2Lz-3g-1ft"/>
+                            <constraint firstItem="8fA-SR-Vqc" firstAttribute="top" secondItem="b8w-Cj-Vp7" secondAttribute="bottom" constant="8" id="47H-mX-NeM"/>
                             <constraint firstAttribute="leadingMargin" secondItem="b8w-Cj-Vp7" secondAttribute="leading" id="7dj-Pm-GQb"/>
                             <constraint firstItem="b8w-Cj-Vp7" firstAttribute="top" secondItem="x4d-nm-zL2" secondAttribute="bottom" constant="15" id="7hY-ZA-JM9"/>
                             <constraint firstItem="Dap-gS-TwL" firstAttribute="top" secondItem="mkd-0Q-cIf" secondAttribute="bottom" id="938-aT-cQs"/>
+                            <constraint firstItem="3vz-Mx-b34" firstAttribute="leading" secondItem="67q-Xg-OTq" secondAttribute="leadingMargin" constant="-20" id="Deg-8S-qjp"/>
+                            <constraint firstItem="mkd-0Q-cIf" firstAttribute="top" secondItem="8fA-SR-Vqc" secondAttribute="bottom" constant="8" id="M7n-rL-D8x"/>
                             <constraint firstItem="aQn-XV-nF0" firstAttribute="centerY" secondItem="67q-Xg-OTq" secondAttribute="centerY" id="S0l-6b-1of"/>
+                            <constraint firstItem="Dap-gS-TwL" firstAttribute="top" secondItem="3vz-Mx-b34" secondAttribute="bottom" id="Wcj-Wn-HwM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b8w-Cj-Vp7" secondAttribute="trailing" id="Xec-ZV-c8v"/>
-                            <constraint firstItem="mkd-0Q-cIf" firstAttribute="top" secondItem="b8w-Cj-Vp7" secondAttribute="bottom" constant="15" id="YAg-Zg-cjy"/>
                             <constraint firstItem="mkd-0Q-cIf" firstAttribute="centerX" secondItem="67q-Xg-OTq" secondAttribute="centerX" id="m1v-FI-4ag"/>
                             <constraint firstItem="mkd-0Q-cIf" firstAttribute="width" secondItem="67q-Xg-OTq" secondAttribute="width" id="mPu-55-MKJ"/>
                             <constraint firstItem="aQn-XV-nF0" firstAttribute="centerX" secondItem="67q-Xg-OTq" secondAttribute="centerX" id="t9d-lP-1Xu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8fA-SR-Vqc" secondAttribute="trailing" id="wsB-MR-ygW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vwl-82-ePN"/>
                     <connections>
                         <outlet property="indicatorView" destination="aQn-XV-nF0" id="qmy-OB-WCS"/>
+                        <outlet property="mapView" destination="3vz-Mx-b34" id="sX5-UV-jX5"/>
+                        <outlet property="segment" destination="8fA-SR-Vqc" id="JBV-e1-1Po"/>
                         <outlet property="startButton" destination="b8w-Cj-Vp7" id="i4d-4r-hPi"/>
                         <outlet property="tableView" destination="mkd-0Q-cIf" id="G99-Tt-K2T"/>
                     </connections>

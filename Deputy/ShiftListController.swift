@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,7 +18,12 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet var indicatorView: UIActivityIndicatorView!
 
+    @IBOutlet var segment: UISegmentedControl!
+
+    @IBOutlet var mapView: MKMapView!
+
     var shifts = [String : [Shift]]()
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +31,8 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
         startButton.layer.cornerRadius = 5
+        
+        self.mapView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +47,7 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
                 else {
                     self.startButton.isEnabled = true
-                    self.startButton.backgroundColor = UIColor(displayP3Red: 148/255.0, green: 205/255.0, blue: 18/255.0, alpha: 1)
+                    self.startButton.backgroundColor = UIColor(displayP3Red: 149/255.0, green: 205/255.0, blue: 18/255.0, alpha: 1)
                 }
                 
                 self.tableView.reloadData()
@@ -91,4 +99,67 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
             self.navigationController?.pushViewController(nextViewController, animated:true)
         }
     }
+    
+    @IBAction func segmentValueChanged(_ sender: Any) {
+        if self.segment.selectedSegmentIndex == 1 {
+            mapView.isHidden = false
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestLocation()
+            var allShifts = [Shift]()
+            if let inprogress = shifts[Constants.SHIFT_SECTION_NAME_INPROGRESS] {
+                allShifts.append(contentsOf: inprogress)
+            }
+            if let finished = shifts[Constants.SHIFT_SECTION_NAME_FINISHED] {
+                allShifts.append(contentsOf: finished)
+            }
+            for shift in allShifts {
+                mapView.addShiftAnnotation(type: .start, coordinate: shift.startLocation!, time: shift.startTime!)
+                
+                if shift.endTime != nil {
+                    mapView.addShiftAnnotation(type: .end, coordinate: shift.endLocation!, time: shift.endTime!)
+                }
+            }
+
+            tableView.isHidden = true
+            tableView.delegate = nil
+            tableView.dataSource = nil
+        }
+        else {
+            tableView.isHidden = false
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.reloadData()
+            
+            mapView.isHidden = true
+            mapView.removeAnnotations(mapView.annotations)
+            locationManager.delegate = nil
+            locationManager.stopUpdatingLocation()
+
+        }
+    }
+
 }
+
+extension ShiftListController : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        let span = MKCoordinateSpanMake(1, 1)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error)")
+    }
+    
+}
+

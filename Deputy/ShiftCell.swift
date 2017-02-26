@@ -23,7 +23,7 @@ class ShiftCell: UITableViewCell {
         else {
             self.endedLabel.text = "InProgress"
         }
-        self.iconView.image = UIImage.init(named: "icon")
+        self.iconView.image = UIImage.init(named: "icondefault")
         
         if shift.icon == nil {
             return
