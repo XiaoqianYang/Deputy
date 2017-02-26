@@ -25,7 +25,6 @@ class FinishedShiftController: UIViewController {
         
         self.mapView.addShiftAnnotation(type: .start, coordinate: self.shift.startLocation!, time: self.shift.startTime!)
         self.mapView.addShiftAnnotation(type: .end, coordinate: self.shift.endLocation!, time: self.shift.endTime!)
-
     }
 
     override func viewDidLoad() {
@@ -71,46 +70,36 @@ extension MKMapView {
         let geoCode = CLGeocoder.init()
         
         geoCode.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            var stringType : String
+            var title : String
+
             switch type {
             case .start:
-                stringType = "start"
+                title = "Started at: \(Date.MyDateFromDate(date: time))"
             case .end:
-                stringType = "end"
+                title = "Ended at: \(Date.MyDateFromDate(date: time))"
             }
+
             
             if error != nil {
-                let annotation = ShiftAnnotation(coordinate: coordinate, title: stringType, subtitle: Date.MyDateFromDate(date: time))
-                self.addAnnotation(annotation)
-                print(error?.localizedDescription)
+                self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: title, subtitle: "\(coordinate.latitude),\(coordinate.longitude)"))
+                print(error?.localizedDescription ?? "")
+                
                 return
             }
             // Place details
             if let placeMark = placemarks?[0] {
-                var title : String?
-                // Location name
-                if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
-                    switch type {
-                    case .start:
-                        title = "Started at: \(Date.MyDateFromDate(date: time))"
-                    case .end:
-                        title = "Ended at: \(Date.MyDateFromDate(date: time))"
-                    }
-                }
-                
                 let address = placeMark.addressDictionary!["FormattedAddressLines"] as! [String]
                 let subtitle = address.joined(separator: ",")
                 
                 self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: title, subtitle: "\(subtitle)"))
             }
             else {
-                self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: stringType, subtitle: Date.MyDateFromDate(date: time)))
+                self.addAnnotation(ShiftAnnotation(coordinate: coordinate, title: title, subtitle: "\(coordinate.latitude),\(coordinate.longitude)"))
             }
             
             
         })
     }
-    
 }
 
 

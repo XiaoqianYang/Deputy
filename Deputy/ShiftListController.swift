@@ -21,6 +21,7 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "My Shifts"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         startButton.layer.cornerRadius = 5
@@ -32,12 +33,19 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
             shifts in
             self.shifts = shifts
             DispatchQueue.main.async {
+                if (self.shifts[Constants.SHIFT_SECTION_NAME_INPROGRESS]?.count)! > 0 {
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
+                }
+                else {
+                    self.startButton.isEnabled = true
+                    self.startButton.backgroundColor = UIColor(displayP3Red: 148/255.0, green: 205/255.0, blue: 18/255.0, alpha: 1)
+                }
+                
                 self.tableView.reloadData()
                 self.indicatorView.stopAnimating()
-                self.indicatorView.removeFromSuperview()
             }
         })
-        self.view.addSubview(self.indicatorView)
         self.indicatorView.startAnimating()
     }
     

@@ -84,6 +84,7 @@ class ShiftClient {
             ( data, response, error) in
             if let e = error {
                 print("POST Error: \(e)")
+                comletion()
             }
             else {
                 let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
@@ -167,8 +168,10 @@ class ShiftClient {
             shifts.append(shift)
         }
         
-        //TODO Sort With StartTime
-        return shifts
+        let sorted = shifts.sorted {
+            $0.startTime! > $1.startTime!
+        }
+        return sorted
     }
 
     

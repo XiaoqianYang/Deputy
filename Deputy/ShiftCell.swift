@@ -17,7 +17,12 @@ class ShiftCell: UITableViewCell {
     func configCell(shift : Shift) {
         
         self.startedLabel.text = "Started at: \(Date.MyDateFromDate(date: shift.startTime))"
-        self.endedLabel.text = "Ended at: \(Date.MyDateFromDate(date: shift.endTime))"
+        if (shift.endTime != nil) {
+            self.endedLabel.text = "Ended at: \(Date.MyDateFromDate(date: shift.endTime))"
+        }
+        else {
+            self.endedLabel.text = "InProgress"
+        }
         self.iconView.image = UIImage.init(named: "icon")
         
         if shift.icon == nil {

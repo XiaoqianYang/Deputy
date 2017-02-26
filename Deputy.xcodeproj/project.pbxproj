@@ -209,11 +209,11 @@
 		47FBF2761E5D689B00196EC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				47FBF2851E5EC30800196EC7 /* DatePickerDialog.swift */,
 				47FBF2421E5D283400196EC7 /* Main.storyboard */,
 				47FBF2471E5D283400196EC7 /* LaunchScreen.storyboard */,
 				47FBF26E1E5D372100196EC7 /* ShiftCell.swift */,
 				47FBF2821E5DBB2100196EC7 /* ShiftAnnotation.swift */,
+				47FBF2851E5EC30800196EC7 /* DatePickerDialog.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";

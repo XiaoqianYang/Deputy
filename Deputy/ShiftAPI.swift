@@ -27,13 +27,17 @@ class ShiftAPI {
                 }
                 else {
                     //if off line get from db
-                    comletion(self.formatShiftsListToTableDataSource(shifts:ShiftDataManager.shared.getShiftsFromDB()))
+                    let localShifts = self.formatShiftsListToTableDataSource(shifts:ShiftDataManager.shared.getShiftsFromDB())
+                    comletion(localShifts)
                 }
             })
         }
         else {
             //if off line get from db
-            comletion(self.formatShiftsListToTableDataSource(shifts:ShiftDataManager.shared.getShiftsFromDB()))
+            DispatchQueue.global(qos: .background).async {
+                let localShifts = self.formatShiftsListToTableDataSource(shifts:ShiftDataManager.shared.getShiftsFromDB())
+                comletion(localShifts)
+            }
         }
     }
     
@@ -68,8 +72,9 @@ class ShiftAPI {
                 }
             }
         }
-        dataSource["InProgress"] = inprogressShift
-        dataSource["Finished"] = finishedShift
+
+        dataSource[Constants.SHIFT_SECTION_NAME_INPROGRESS] = inprogressShift
+        dataSource[Constants.SHIFT_SECTION_NAME_FINISHED] = finishedShift
         
         return dataSource
     }

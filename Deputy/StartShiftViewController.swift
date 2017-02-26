@@ -22,6 +22,7 @@ class StartShiftViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     func configureView() {
+        self.title = "Start Shift"
         startTimeInput.text = Date.MyDateFromDate(date: Date())
         self.shift.startTime = Date()
         let tapTime = UITapGestureRecognizer(target: self, action: #selector(tapStartTime(_:)))

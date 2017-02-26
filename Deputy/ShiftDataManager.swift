@@ -11,7 +11,7 @@ import CoreData
 
 class ShiftDataManager {
     static let shared = ShiftDataManager()
-    lazy var coreDataManager = CoreDataManager()
+    lazy var coreDataManager = CoreDataManager.shared
     
     func getShiftsFromDB() -> [Shift]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShiftData")
@@ -66,6 +66,8 @@ class ShiftDataManager {
             }
         }
     }
+    
+    private init() {}
     
     private func getShiftDataFromDB() -> [ShiftData]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShiftData")
