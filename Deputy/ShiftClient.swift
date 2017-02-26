@@ -106,7 +106,7 @@ class ShiftClient {
                 print("Error downloading picture: \(e)")
                 comletion(nil)
             } else {
-                if let res = response as? HTTPURLResponse {
+                if let _ = response as? HTTPURLResponse {
                     if let imageData = data {
                         let image = UIImage(data: imageData)
                         comletion(image!)

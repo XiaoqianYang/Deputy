@@ -18,11 +18,8 @@ class InProgressShiftViewController: UIViewController {
     @IBOutlet var starteTimeLabel: UILabel!
     @IBOutlet var startPlaceLabel: UILabel!
     @IBOutlet var endTimeInput: UILabel!
-    
     @IBOutlet var endPlaceInput: UILabel!
-
     @IBOutlet var endShiftBtn: UIButton!
-    
     @IBOutlet var indicatorView: UIActivityIndicatorView!
     let locationManager = CLLocationManager()
 
@@ -56,7 +53,7 @@ class InProgressShiftViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.configureView()
     }
     
@@ -87,7 +84,7 @@ class InProgressShiftViewController: UIViewController {
             ShiftAPI.shared.endShift(shift: self.shift, comletion: {
                 DispatchQueue.main.async {
                     self.indicatorView.stopAnimating()
-                    self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             })
             self.indicatorView.startAnimating()
@@ -154,7 +151,6 @@ extension InProgressShiftViewController: HandleLocationSearch {
     
 }
 
-
 extension UILabel {
     func setPlaceForLabel(coordinate: CLLocationCoordinate2D?) {
         if coordinate == nil {
@@ -184,5 +180,4 @@ extension UILabel {
             
         })
     }
-    
 }

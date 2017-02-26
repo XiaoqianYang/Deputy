@@ -11,7 +11,7 @@ import CoreData
 
 class ShiftDataManager {
     static let shared = ShiftDataManager()
-    lazy var coreDataManager = CoreDataManager.shared
+    private lazy var coreDataManager = CoreDataManager.shared
     
     func getShiftsFromDB() -> [Shift]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShiftData")
@@ -69,7 +69,7 @@ class ShiftDataManager {
     
     private init() {}
     
-    private func getShiftDataFromDB() -> [ShiftData]? {
+    internal func getShiftDataFromDB() -> [ShiftData]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShiftData")
         
         // Add Sort Descriptor
@@ -89,7 +89,7 @@ class ShiftDataManager {
         return shifts
     }
     
-    private func getShiftDataFromDB(byId id: Int) -> ShiftData? {
+    internal func getShiftDataFromDB(byId id: Int) -> ShiftData? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShiftData")
         
         fetchRequest.predicate = NSPredicate(format: "id = %d", id)
@@ -108,7 +108,7 @@ class ShiftDataManager {
         return nil
     }
     
-    private func updateShiftDataWithShift(shift: Shift) {
+    internal func updateShiftDataWithShift(shift: Shift) {
         var shiftData = shift.shiftData
         if shiftData == nil {
             shiftData = getShiftDataFromDB(byId: shift.id!)
@@ -144,7 +144,11 @@ class ShiftDataManager {
         try? coreDataManager.managedObjectContext.save()
     }
     
-    private func addShiftToDB(shift: Shift) {
+    internal func addShiftToDB(shift: Shift) {
+        if shift.id == nil || shift.startTime == nil || shift.startLocation == nil {
+            return
+        }
+        
         let shiftData = NSEntityDescription.insertNewObject(forEntityName: "ShiftData", into: coreDataManager.managedObjectContext)
         shiftData.setValue(shift.id, forKey: "id")
         shiftData.setValue(shift.startTime! as NSDate, forKey: "startTime")

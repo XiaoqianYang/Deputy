@@ -18,7 +18,7 @@
 		47FBF2441E5D283400196EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF2421E5D283400196EC7 /* Main.storyboard */; };
 		47FBF2461E5D283400196EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF2451E5D283400196EC7 /* Assets.xcassets */; };
 		47FBF2491E5D283400196EC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF2471E5D283400196EC7 /* LaunchScreen.storyboard */; };
-		47FBF2541E5D283400196EC7 /* DeputyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2531E5D283400196EC7 /* DeputyTests.swift */; };
+		47FBF2541E5D283400196EC7 /* ShiftDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF2531E5D283400196EC7 /* ShiftDataManagerTests.swift */; };
 		47FBF25F1E5D283400196EC7 /* DeputyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF25E1E5D283400196EC7 /* DeputyUITests.swift */; };
 		47FBF26D1E5D307F00196EC7 /* ShiftListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF26C1E5D307F00196EC7 /* ShiftListController.swift */; };
 		47FBF26F1E5D372100196EC7 /* ShiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF26E1E5D372100196EC7 /* ShiftCell.swift */; };
@@ -65,7 +65,7 @@
 		47FBF2481E5D283400196EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47FBF24A1E5D283400196EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47FBF24F1E5D283400196EC7 /* DeputyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeputyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		47FBF2531E5D283400196EC7 /* DeputyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeputyTests.swift; sourceTree = "<group>"; };
+		47FBF2531E5D283400196EC7 /* ShiftDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDataManagerTests.swift; sourceTree = "<group>"; };
 		47FBF2551E5D283400196EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47FBF25A1E5D283400196EC7 /* DeputyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeputyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FBF25E1E5D283400196EC7 /* DeputyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeputyUITests.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		47FBF2521E5D283400196EC7 /* DeputyTests */ = {
 			isa = PBXGroup;
 			children = (
-				47FBF2531E5D283400196EC7 /* DeputyTests.swift */,
+				47FBF2531E5D283400196EC7 /* ShiftDataManagerTests.swift */,
 				47FBF2551E5D283400196EC7 /* Info.plist */,
 			);
 			path = DeputyTests;
@@ -199,9 +199,9 @@
 		47FBF2751E5D686600196EC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				47FBF2391E5D283400196EC7 /* AppDelegate.swift */,
 				470690DA1E61926000525373 /* icondefault.png */,
 				47FBF24A1E5D283400196EC7 /* Info.plist */,
-				47FBF2391E5D283400196EC7 /* AppDelegate.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47FBF2541E5D283400196EC7 /* DeputyTests.swift in Sources */,
+				47FBF2541E5D283400196EC7 /* ShiftDataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,7 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
         self.title = "My Shifts"
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        startButton.layer.cornerRadius = 5
+        startButton.layer.cornerRadius = 4
         
         self.mapView.isHidden = true
     }

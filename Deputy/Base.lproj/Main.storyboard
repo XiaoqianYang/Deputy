@@ -46,7 +46,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="pza-Ie-5fD" kind="push" id="V3X-eb-rvv"/>
+                                    <segue destination="pza-Ie-5fD" kind="show" id="V3X-eb-rvv"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8fA-SR-Vqc">

@@ -52,6 +52,7 @@ class LocationSearchMap: UIViewController {
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         mapItem.openInMaps(launchOptions: launchOptions)
     }
+
 }
 
 extension LocationSearchMap : CLLocationManagerDelegate {
@@ -79,7 +80,7 @@ extension LocationSearchMap: HandleMapSearch {
     
     func selectPlace(_ placemark: MKPlacemark){
         self.handleLocationSearchDelegate?.selectPlace(placemark)
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
 }
