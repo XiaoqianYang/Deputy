@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SystemConfiguration
 
 enum UpdateShiftType {
     case start
@@ -29,7 +30,7 @@ class ShiftClient {
         urlString = "https://apjoqdqpi3.execute-api.us-west-2.amazonaws.com/dmc"
     }
 
-    func shiftGet(comletion:@escaping (_ shifts: [Shift])->Void){
+    func shiftGet(comletion:@escaping (_ shifts: [Shift]?)->Void){
         let url = URL(string: "\(urlString)/shifts")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
@@ -41,7 +42,7 @@ class ShiftClient {
                 do {
                     json = try JSONSerialization.jsonObject(with: data!) as? [Any]
                     if(json == nil) {
-                        comletion([])
+                        comletion(nil)
                     }
                     else {
                         comletion(self.jsonToShifts(json: json!))
@@ -49,11 +50,11 @@ class ShiftClient {
                 }
                 catch {
                     print(error)
-                    comletion([])
+                    comletion(nil)
                 }
              }
             else {
-                comletion([])
+                comletion(nil)
             }
 
         }
@@ -67,11 +68,11 @@ class ShiftClient {
         var dic : NSMutableDictionary
         if type == .start {
             url = URL(string: "\(urlString)/shift/start")!
-            dic = shift.getStartShiftDic()!
+            dic = getStartShiftDic(byShift: shift)!
         }
         else {
             url = URL(string: "\(urlString)/shift/end")!
-            dic = shift.getEndShiftDic()!
+            dic = getEndShiftDic(byShift: shift)!
         }
         
         var request = URLRequest(url: url)
@@ -124,8 +125,28 @@ class ShiftClient {
         
     }
 
+    func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+    }
     
-    func jsonToShifts(json:[Any]) -> [Shift] {
+    private func jsonToShifts(json:[Any]) -> [Shift] {
         var shifts = [Shift]()
         for(_, item) in (json.enumerated()) {
             let it = item as! [String: Any]
@@ -142,13 +163,43 @@ class ShiftClient {
             let endLongitude = it["endLongitude"] as? String
             let icon = it["image"] as? String
             
-            let shift = Shift()
-            shift.configShift(id: id, startTime: start, endTime: end, startLatitude: startLatitude, startLongitude: startLongitude, endLatitude: endLatitude, endLongitude: endLongitude, icon: icon)
+            let shift = Shift(id: id, startTime: start, endTime: end, startLatitude: startLatitude, startLongitude: startLongitude, endLatitude: endLatitude, endLongitude: endLongitude, icon: icon)
             shifts.append(shift)
         }
         
+        //TODO Sort With StartTime
         return shifts
     }
 
     
+    private func getStartShiftDic(byShift shift:Shift) -> NSMutableDictionary? {
+        if shift.startTime == nil || shift.startLocation == nil {
+            return nil
+        }
+        else {
+            let shiftString = NSMutableDictionary()
+            shiftString.setValue(Date.DateTo8601String(date: shift.startTime!), forKey: "time")
+            shiftString.setValue(String(format:"%f", (shift.startLocation?.latitude)!), forKey: "latitude")
+            shiftString.setValue(String(format:"%f", (shift.startLocation?.longitude)!), forKey: "longitude")
+            
+            print("String\n\(shiftString)")
+            return shiftString
+        }
+    }
+    
+    private func getEndShiftDic(byShift shift:Shift) -> NSMutableDictionary? {
+        if shift.endTime == nil || shift.endLocation == nil {
+            return nil
+        }
+        else {
+            let shiftString = NSMutableDictionary()
+            shiftString.setValue(Date.DateTo8601String(date: shift.endTime!), forKey: "time")
+            shiftString.setValue(String(format:"%f", (shift.endLocation?.latitude)!), forKey: "latitude")
+            shiftString.setValue(String(format:"%f", (shift.endLocation?.longitude)!), forKey: "longitude")
+            
+            print("String\n\(shiftString)")
+            return shiftString
+        }
+    }
 }
+

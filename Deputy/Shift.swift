@@ -17,8 +17,10 @@ class Shift {
     var startLocation : CLLocationCoordinate2D?
     var endLocation : CLLocationCoordinate2D?
     var icon : String?
+    var shiftData : ShiftData?
     
-    func configShift(id: Int?,startTime: String, endTime: String?, startLatitude: String, startLongitude: String, endLatitude: String?, endLongitude: String?, icon: String?) {
+    init() {}
+    init(id: Int?,startTime: String, endTime: String?, startLatitude: String, startLongitude: String, endLatitude: String?, endLongitude: String?, icon: String?) {
         self.id = id
         self.startTime = Date.DateFrom8601String(string: startTime)
         
@@ -35,38 +37,21 @@ class Shift {
             self.icon = ic
         }
     }
-    
-}
 
-extension Shift {
+    init(fromShiftData shiftData:ShiftData) {
+        self.id = Int(shiftData.id)
+        self.startTime = shiftData.startTime as Date?
+        
+        
+        self.endTime = shiftData.endTime as Date?
+        
+        self.startLocation = CLLocationCoordinate2DMake(shiftData.startLatitude, shiftData.startLongitude)
+        
+        self.endLocation = CLLocationCoordinate2DMake(shiftData.endLatitude, shiftData.endLongitude)
+        
+        self.icon = shiftData.icon
+        
+        self.shiftData = shiftData
     
-    func getStartShiftDic() -> NSMutableDictionary? {
-        if startTime == nil || startLocation == nil {
-            return nil
-        }
-        else {
-            let shiftString = NSMutableDictionary()
-            shiftString.setValue(Date.DateTo8601String(date: startTime!), forKey: "time")
-            shiftString.setValue(String(format:"%f", (startLocation?.latitude)!), forKey: "latitude")
-            shiftString.setValue(String(format:"%f", (startLocation?.longitude)!), forKey: "longitude")
-            
-            print("String\n\(shiftString)")
-            return shiftString
-        }
-    }
-    
-    func getEndShiftDic() -> NSMutableDictionary? {
-        if endTime == nil || endLocation == nil {
-            return nil
-        }
-        else {
-            let shiftString = NSMutableDictionary()
-            shiftString.setValue(Date.DateTo8601String(date: endTime!), forKey: "time")
-            shiftString.setValue(String(format:"%f", (endLocation?.latitude)!), forKey: "latitude")
-            shiftString.setValue(String(format:"%f", (endLocation?.longitude)!), forKey: "longitude")
-            
-            print("String\n\(shiftString)")
-            return shiftString
-        }
     }
 }

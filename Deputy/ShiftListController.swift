@@ -12,11 +12,12 @@ import UIKit
 class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
-    var shifts = [String : [Shift]]()
 
     @IBOutlet var startButton: UIButton!
     
     @IBOutlet var indicatorView: UIActivityIndicatorView!
+
+    var shifts = [String : [Shift]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
