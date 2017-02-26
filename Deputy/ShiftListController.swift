@@ -41,7 +41,7 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
             shifts in
             self.shifts = shifts
             DispatchQueue.main.async {
-                if (self.shifts[Constants.SHIFT_SECTION_NAME_INPROGRESS]?.count)! > 0 {
+                if (Array(self.shifts.keys).contains(Constants.SHIFT_SECTION_NAME_INPROGRESS)) {
                     self.startButton.isEnabled = false
                     self.startButton.backgroundColor = UIColor.lightGray
                 }
@@ -88,7 +88,7 @@ class ShiftListController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        if indexPath.section == 0 {
+        if Array(shifts.keys)[indexPath.section] == Constants.SHIFT_SECTION_NAME_INPROGRESS {
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InProgress") as! InProgressShiftViewController
             nextViewController.shift = Array(shifts.values)[indexPath.section][indexPath.row]
             self.navigationController?.pushViewController(nextViewController, animated:true)

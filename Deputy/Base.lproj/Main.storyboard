@@ -55,7 +55,7 @@
                                     <segment title="Table"/>
                                     <segment title="Map"/>
                                 </segments>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.58284842967987061" green="0.80278862847222221" blue="0.83772786458333337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segmentValueChanged:" destination="b40-38-xUd" eventType="valueChanged" id="wmo-ad-gIO"/>
                                 </connections>

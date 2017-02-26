@@ -72,9 +72,13 @@ class ShiftAPI {
                 }
             }
         }
-
-        dataSource[Constants.SHIFT_SECTION_NAME_INPROGRESS] = inprogressShift
-        dataSource[Constants.SHIFT_SECTION_NAME_FINISHED] = finishedShift
+        
+        if inprogressShift.count > 0 {
+            dataSource[Constants.SHIFT_SECTION_NAME_INPROGRESS] = inprogressShift
+        }
+        if finishedShift.count > 0 {
+            dataSource[Constants.SHIFT_SECTION_NAME_FINISHED] = finishedShift
+        }
         
         return dataSource
     }
